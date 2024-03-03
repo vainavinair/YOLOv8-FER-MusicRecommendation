@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Webcam Display Flask App</h1>
+<div class="container">
+    <div class="row">
+        <div class="camera-controls">
+            <form method="post" action="{{ url_for('main.tasks') }}">
+                <input type="submit" class="btn btn-primary my-button" value="Start" name="start" />
+                <input type="submit" class="btn btn-primary my-button" value="Stop" name="stop" />
+                <input type="submit" class="btn btn-primary my-button" value="Capture" name="capture" />
+            </form>
+            <img src="{{ url_for('main.video_feed') }}" onerror="this.style.display='none'" class="camera-feed" />
+        </div>
+    </div>
+</div>
+{% endblock content%}

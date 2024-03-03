@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if songs %}
+    <ul>
+            <div class="spotify-playlists">
+                <h2>{{emotion}}</h2>
+            <form method="post" action="{{ url_for('recommendations.recommend') }}">
+            {% for i in range(0,songs|length + 1)%}
+                    <div class="list">
+                      <div class="item">
+                        <img src={{ songs['images'][i] }} />
+                        <div class="play">
+                            <span class="fa fa-play">
+                                <button type="submit" class="btn song-button" name="song_name" value="{{ songs['id'][i] }}"> </button>
+                            </span>
+                          </div>
+                        <h4 title="{{songs['names'][i]}}">{{ songs['names'][i] }}</h4>
+                        {% set num_artists = songs['artists'][i]|length  + 1%}
+                        {% for artist in songs['artists'][i] %}
+                            <span>{{ artist }}{% if not loop.last and loop.index != num_artists - 1 %},{% endif %}</span>
+                        {% endfor %}
+                        
+                      </div>
+            {% endfor %}
+        </form>
+    </ul>
+{% endif %}
+{% if song_id %}
+<div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="spotify-iframe-container">
+            <iframe class="spotify-iframe"
+                src="https://open.spotify.com/embed/track/{{song_id}}?utm_source=generator&theme=0" width="100%"
+                height="152" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            {% if cs_songs %}
+            <ul>
+                <div class="spotify-playlists">
+                    <h2>{{emotion}}</h2>
+                <form method="post" action="{{ url_for('recommendations.recommend') }}">
+                {% for i in range(0,cs_songs|length + 1)%}
+                        <div class="list">
+                          <div class="item">
+                            <img src={{ cs_songs['images'][i] }} />
+                            <div class="play">
+                                <span class="fa fa-play">
+                                    <button type="submit" class="btn song-button" name="song_name" value="{{ cs_songs['id'][i] }}"> </button>
+                                </span>
+                              </div>
+                            <h4 title="{{cs_songs['names'][i]}}">{{ cs_songs['names'][i] }}</h4>
+                            {% set num_artists = cs_songs['artists'][i]|length  + 1%}
+                            {% for artist in cs_songs['artists'][i] %}
+                                <span>{{ artist }}{% if not loop.last and loop.index != num_artists - 1 %},{% endif %}</span>
+                            {% endfor %}
+                            
+                          </div>
+                {% endfor %}
+            </form>
+        </ul>
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if ibcf_songs %}
+            <ul>
+                <div class="spotify-playlists">
+                    <h2>{{emotion}}</h2>
+                <form method="post" action="{{ url_for('recommendations.recommend') }}">
+                {% for i in range(0,ibcf_songs|length + 1)%}
+                        <div class="list">
+                          <div class="item">
+                            <img src={{ ibcf_songs['images'][i] }} />
+                            <div class="play">
+                                <span class="fa fa-play">
+                                    <button type="submit" class="btn song-button" name="song_name" value="{{ ibcf_songs['id'][i] }}"> </button>
+                                </span>
+                              </div>
+                            <h4 title="{{ibcf_songs['names'][i]}}">{{ ibcf_songs['names'][i] }}</h4>
+                            {% set num_artists = ibcf_songs['artists'][i]|length  + 1%}
+                            {% for artist in ibcf_songs['artists'][i] %}
+                                <span>{{ artist }}{% if not loop.last and loop.index != num_artists - 1 %},{% endif %}</span>
+                            {% endfor %}
+                            
+                          </div>
+                {% endfor %}
+            </form>
+        </ul>
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if ubcf_songs %}
+            <ul>
+                <div class="spotify-playlists">
+                    <h2>{{emotion}}</h2>
+                <form method="post" action="{{ url_for('recommendations.recommend') }}">
+                {% for i in range(0,ubcf_songs|length + 1)%}
+                        <div class="list">
+                          <div class="item">
+                            <img src={{ ubcf_songs['images'][i] }} />
+                            <div class="play">
+                                <span class="fa fa-play">
+                                    <button type="submit" class="btn song-button" name="song_name" value="{{ ubcf_songs['id'][i] }}"> </button>
+                                </span>
+                              </div>
+                            <h4 title="{{ubcf_songs['names'][i]}}">{{ ubcf_songs['names'][i] }}</h4>
+                            {% set num_artists = ubcf_songs['artists'][i]|length  + 1%}
+                            {% for artist in ubcf_songs['artists'][i] %}
+                                <span>{{ artist }}{% if not loop.last and loop.index != num_artists - 1 %},{% endif %}</span>
+                            {% endfor %}
+                            
+                          </div>
+                {% endfor %}
+            </form>
+        </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <script>
+    // Get all song buttons
+    const songButtons = document.querySelectorAll('.song-button');
+
+    // Add click event listener to each button
+    songButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Get the song ID from the button's data attribute
+            const songId = this.getAttribute('data-song-id');
+
+            // Set the iframe source to the Spotify track URL with the song ID
+            document.getElementById('spotify-iframe').src = `https://open.spotify.com/embed/track/${songId}?utm_source=generator&theme=0`;
+        });
+    });
+</script> -->
+{% endblock content %}
