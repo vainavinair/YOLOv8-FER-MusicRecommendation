@@ -1,3 +1,4 @@
+from flask_login import login_required
 from app.main import bp
 from flask import Response, redirect, render_template, request, session, url_for
 
@@ -8,13 +9,17 @@ from ..recommedations.spotify_auth import SpotifyAPI
 
 video_stream = VideoCamera()
 
+@login_required
 @bp.route('/')
 def home():
-    s_api = SpotifyAPI()
-    token = s_api.get_token()
-    session['token'] = token
-    video_stream.off_camera()
-    return render_template('camera.html')
+    if 'username' in session:
+        s_api = SpotifyAPI()
+        token = s_api.get_token()
+        session['token'] = token
+        video_stream.off_camera()
+        return render_template('camera.html')
+    else:
+        return redirect(url_for('users.login'))
 
 
 def gen(camera):
@@ -48,4 +53,7 @@ def tasks():
         
 @bp.route('/about')
 def about():
-        return render_template('about.html')
+        if 'username' in session:
+            return render_template('about.html')
+        else:
+            return redirect(url_for('users.login'))

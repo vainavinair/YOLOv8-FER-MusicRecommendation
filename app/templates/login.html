@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="flex-parent">
+        <div class="left">
+            <div class="overlay">
+            <h1>Moodify.</h1>
+            <p>Welcome to Moodify - Where Your Emotions Meet Melodies! Let's Tune Into Your Mood and Discover Your Perfect Playlist!</p>
+            </div>
+        </div>
+            <div class="right">
+                <form method="POST">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" required><br>
+                    <button type="submit">Login</button>
+                </form>
+        </div>
+    </div>
+{% endblock content %}

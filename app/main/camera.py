@@ -10,7 +10,7 @@ class VideoCamera(object):
         self.is_running = True
         #Load Yolo
         
-        model_url = 'D:/study/rserch-fer/model/runs/classify/train17/weights/best.pt'
+        model_url = 'app/static/FER_recom/best.pt'
         self.model = YOLO(model_url)
         # Load the Haar Cascade Classifier for face detection
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
