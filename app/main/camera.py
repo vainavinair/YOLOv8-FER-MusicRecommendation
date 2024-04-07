@@ -25,11 +25,13 @@ class VideoCamera(object):
         # Toggle the camera's state between running and stopped
         self.is_running = True
         self.video = cv2.VideoCapture(0)  
+        return True
 
     def off_camera(self):
         # Toggle the camera's state between running and stopped
         self.is_running = False
         self.video.release()    
+        return False
 
     def get_detected_emotion(self):
         return self.detected_emotion     

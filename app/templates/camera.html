@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Webcam Display Flask App</h1>
+<h1 class="home-title">Song Reccomendations by Moodify</h1>
 <div class="container">
     <div class="row">
         <div class="camera-controls">
@@ -11,6 +11,11 @@
                 <input type="submit" class="btn btn-primary my-button" value="Capture" name="capture" />
             </form>
             <img src="{{ url_for('main.video_feed') }}" onerror="this.style.display='none'" class="camera-feed" />
+            {% if cam_status == False %}
+            <div class="alert alert-secondary" role="alert">
+                Camera is currently turned off, click on 'Start' to get song recommendations
+              </div>
+            {% endif %}
         </div>
     </div>
 </div>

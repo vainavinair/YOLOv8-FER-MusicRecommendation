@@ -2,16 +2,24 @@
 {% block content %}
 {% if songs %}
     <ul>
-            <div class="spotify-playlists">
-                <h2>{{emotion}}</h2>
+            <div class="spotify-playlists-1">
+                <h2>Your Top Songs for the Mood: {{emotion}}</h2>
             <form method="post" action="{{ url_for('recommendations.recommend') }}">
-            {% for i in range(0,songs|length + 1)%}
-                    <div class="list">
+            {% for i in range(0,songs['id']|length)%}
+                    <div class="list2">
                       <div class="item">
-                        <img src={{ songs['images'][i] }} />
+                        {% set song_image = songs['images'][i] %}
+                            {% if song_image and song_image != '/' %}
+                                <!-- The song_image variable contains a valid path to the image -->
+                                <img src="{{ song_image }}" />
+                            {% else %}
+                                <!-- Use the default image path -->
+                                <img src="{{ url_for('static', filename='images/login-img.jpg') }}" />
+                            {% endif %}
                         <div class="play">
                             <span class="fa fa-play">
-                                <button type="submit" class="btn song-button" name="song_name" value="{{ songs['id'][i] }}"> </button>
+                                <button type="submit" class="btn song-button" name="song_name" value="{{ songs['id'][i] }}"> 
+                                </button>
                             </span>
                           </div>
                         <h4 title="{{songs['names'][i]}}">{{ songs['names'][i] }}</h4>
@@ -46,12 +54,19 @@
             {% if cs_songs %}
             <ul>
                 <div class="spotify-playlists">
-                    <h2>{{emotion}}</h2>
+                    <h2>Your Favorites for Mood: {{emotion}}</h2>
                 <form method="post" action="{{ url_for('recommendations.recommend') }}">
-                {% for i in range(0,cs_songs|length + 1)%}
+                {% for i in range(0,cs_songs['id']|length )%}
                         <div class="list">
                           <div class="item">
-                            <img src={{ cs_songs['images'][i] }} />
+                            {% set song_image = cs_songs['images'][i] %}
+                            {% if song_image and song_image != '/' %}
+                                <!-- The song_image variable contains a valid path to the image -->
+                                <img src="{{ song_image }}" />
+                            {% else %}
+                                <!-- Use the default image path -->
+                                <img src="{{ url_for('static', filename='images/login-img.jpg') }}" />
+                            {% endif %}
                             <div class="play">
                                 <span class="fa fa-play">
                                     <button type="submit" class="btn song-button" name="song_name" value="{{ cs_songs['id'][i] }}"> </button>
@@ -64,6 +79,7 @@
                             {% endfor %}
                             
                           </div>
+                        
                 {% endfor %}
             </form>
         </ul>
@@ -73,12 +89,19 @@
             {% if ibcf_songs %}
             <ul>
                 <div class="spotify-playlists">
-                    <h2>{{emotion}}</h2>
+                    <h2>Currently Popular in Mood: {{emotion}}</h2>
                 <form method="post" action="{{ url_for('recommendations.recommend') }}">
-                {% for i in range(0,ibcf_songs|length + 1)%}
+                {% for i in range(0,ibcf_songs['id']|length)%}
                         <div class="list">
                           <div class="item">
-                            <img src={{ ibcf_songs['images'][i] }} />
+                            {% set song_image = ibcf_songs['images'][i] %}
+                            {% if song_image and song_image != '/' %}
+                                <!-- The song_image variable contains a valid path to the image -->
+                                <img src="{{ song_image }}" />
+                            {% else %}
+                                <!-- Use the default image path -->
+                                <img src="{{ url_for('static', filename='images/login-img.jpg') }}" />
+                            {% endif %}
                             <div class="play">
                                 <span class="fa fa-play">
                                     <button type="submit" class="btn song-button" name="song_name" value="{{ ibcf_songs['id'][i] }}"> </button>
@@ -100,12 +123,19 @@
             {% if ubcf_songs %}
             <ul>
                 <div class="spotify-playlists">
-                    <h2>{{emotion}}</h2>
+                    <h2>Discover New</h2>
                 <form method="post" action="{{ url_for('recommendations.recommend') }}">
-                {% for i in range(0,ubcf_songs|length + 1)%}
+                {% for i in range(0,ubcf_songs['id']|length)%}
                         <div class="list">
                           <div class="item">
-                            <img src={{ ubcf_songs['images'][i] }} />
+                            {% set song_image = ubcf_songs['images'][i] %}
+                            {% if song_image and song_image != '/' %}
+                                <!-- The song_image variable contains a valid path to the image -->
+                                <img src="{{ song_image }}" />
+                            {% else %}
+                                <!-- Use the default image path -->
+                                <img src="{{ url_for('static', filename='images/login-img.jpg') }}" />
+                            {% endif %}
                             <div class="play">
                                 <span class="fa fa-play">
                                     <button type="submit" class="btn song-button" name="song_name" value="{{ ubcf_songs['id'][i] }}"> </button>
@@ -125,6 +155,7 @@
         </div>
     </div>
 </div>
+
 
 
 

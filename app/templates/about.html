@@ -1,4 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>This is an about page</h1>
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-12">
+        <div class="p-5">
+          <h5 class="text-uppercase" style="color: #1db954;">Hello {{user}}</h5>
+        <h1 class="mb-4 display-4" style="font-weight: 600;">Welcome to <span style="color: #1db954;">Moodify</span></h1>
+        <p class="text-white" style="line-height: 2;">
+            Our GUI web application seamlessly integrating Facial Emotion Recognition technology with music recommendation systems. Whether you seek to uplift your mood, explore new musical territories, or simply indulge in a tailored listening experience, our app offers a dynamic and personalized journey through the realms of emotion and music. Join us on this exciting exploration at the intersection of technology, emotion, and music. Experience the power of Facial Emotion Recognition in music recommendation systems with our intuitive and feature-rich GUI web app today!
+        </P>
+        <ul>
+            <li>
+                <strong>Facial Emotion Detection:</strong> Our app utilizes YOLOv8 to accurately identify and interpret facial expressions in real-time, allowing users to interact with music based on their current emotional state.
+            </li>
+            <li>
+                <strong>Personalized Music Recommendations:</strong> Drawing upon various algorithms, our app recommends songs that resonate with the detected emotions. It first showcases the top favorite songs associated with the detected emotion, providing users with an instant selection of mood-appropriate music.
+            </li>
+            <li>
+                <strong>"Your Favourites" Suggestions:</strong> Upon selecting a song of interest, our app offers a curated list of top 5 similar songs, allowing users to explore related tracks that align with their musical preferences. This is done using the Cosine Similarity algorithm.
+            </li>
+            <li>
+                <strong>"Currently Popular" Suggestions:</strong> Our app suggests five songs that are popular among users with similar listening profiles. This is done using the K-Nearest Neighbour algorithm algorithm.
+            </li>
+            <li>
+                <strong>"Discover New" Suggestions:</strong> For added variety, our app also presents random popular songs that are favored by users with similar listening profiles, ensuring a diverse and engaging listening experience. This is done using the Singular Value Decomposition.
+            </li>
+        </ul>
+                
+        </div>
+      </div>
+    </div>
+
+  
+  
 {% endblock content %}

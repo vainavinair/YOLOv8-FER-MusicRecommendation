@@ -42,11 +42,12 @@ def recommend():
                 ibcf_ids.append(x['song_id'])
         ibcf_ids = ','.join(ibcf_ids)
         ibcf_songs_details = s_api.get_tracks(token, ibcf_ids)
-        ubcf_songs = svd.recommender(user=44, K =5)
+        user_id_no = int(user[4:])
+        ubcf_songs = svd.recommender(user=user_id_no, nosong =5)
         ubcf_ids = []
         for x in ubcf_songs:
                 ubcf_ids.append(x['song_id'])
         ubcf_ids = ','.join(ubcf_ids)
         ubcf_songs_details = s_api.get_tracks(token, ubcf_ids)
         return render_template('songs.html', emotion=emotion, song_id=song_id, cs_songs=cs_songs_details, ibcf_songs=ibcf_songs_details, ubcf_songs=ubcf_songs_details)
-    return render_template('songs.html', songs=song_details, emotion=emotion)
+    return render_template('songs.html', songs=song_details, emotion=emotion, user = user)

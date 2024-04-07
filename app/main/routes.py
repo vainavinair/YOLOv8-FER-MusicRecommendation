@@ -13,14 +13,14 @@ video_stream = VideoCamera()
 @bp.route('/')
 def home():
     if 'username' in session:
+        user = session.get('username')
         s_api = SpotifyAPI()
         token = s_api.get_token()
         session['token'] = token
-        video_stream.off_camera()
-        return render_template('camera.html')
+        cam_status = video_stream.off_camera()
+        return render_template('camera.html',cam_status=cam_status, user=user)
     else:
         return redirect(url_for('users.login'))
-
 
 def gen(camera):
     while True:
@@ -38,14 +38,14 @@ def video_feed():
 def tasks():
     if request.method == 'POST':
         if request.form.get('start') == 'Start':
-            video_stream.on_camera()
-            return render_template('camera.html')
+            cam_status= video_stream.on_camera()
+            return render_template('camera.html',cam_status=cam_status)
         elif request.form.get('stop') == 'Stop':
-            video_stream.off_camera()
-            return render_template('camera.html')
+            cam_status = video_stream.off_camera()
+            return render_template('camera.html',cam_status=cam_status)
         
         elif request.form.get('capture') == 'Capture':
-            video_stream.off_camera()
+            cam_status = video_stream.off_camera()
             emotion = video_stream.get_detected_emotion()
             session['emotion'] = emotion
             return redirect(url_for('recommendations.recommend'))
@@ -54,6 +54,7 @@ def tasks():
 @bp.route('/about')
 def about():
         if 'username' in session:
-            return render_template('about.html')
+            user = session.get('username')
+            return render_template('about.html', user=user)
         else:
             return redirect(url_for('users.login'))
