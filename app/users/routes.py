@@ -1,5 +1,5 @@
 from app.users import bp
-from flask import Response, flash, redirect, render_template, request, session, url_for
+from flask import flash, redirect, render_template, request, session, url_for
 import pandas as pd
 
 
@@ -17,7 +17,9 @@ def login():
             # Redirect to a different page after successful login
             return redirect(url_for('main.home'))
         else:
-            return "Invalid username or password"
+            flash('Invalid username or password', 'danger')
+            return render_template('login.html')
+            
     
     # Render login form template for GET requests
     return render_template('login.html')
@@ -25,4 +27,6 @@ def login():
 @bp.route('/logout')
 def logout():
     session.pop('username', None)
+    flash('Login to Continue', 'secondary')
+
     return redirect(url_for('users.login'))

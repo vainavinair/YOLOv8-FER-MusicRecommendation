@@ -1,6 +1,6 @@
 from flask_login import login_required
 from app.main import bp
-from flask import Response, redirect, render_template, request, session, url_for
+from flask import Response, flash, redirect, render_template, request, session, url_for
 
 from app.main.camera import VideoCamera
 from app.main.songs import get_song
@@ -20,6 +20,7 @@ def home():
         cam_status = video_stream.off_camera()
         return render_template('camera.html',cam_status=cam_status, user=user)
     else:
+        flash('Log In First', 'danger')
         return redirect(url_for('users.login'))
 
 def gen(camera):
@@ -57,4 +58,5 @@ def about():
             user = session.get('username')
             return render_template('about.html', user=user)
         else:
+            flash('Log in First', 'danger')
             return redirect(url_for('users.login'))

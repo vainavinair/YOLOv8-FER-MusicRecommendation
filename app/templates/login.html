@@ -9,6 +9,15 @@
         </div>
             <div class="right">
                 <form method="POST">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <label for="username">Username:</label><br>
                     <input type="text" id="username" name="username" required><br>
                     <label for="password">Password:</label><br>
