@@ -20,7 +20,7 @@ def home():
         cam_status = video_stream.off_camera()
         return render_template('camera.html',cam_status=cam_status, user=user)
     else:
-        flash('Log In First', 'danger')
+        # flash('Log In First', 'danger')
         return redirect(url_for('users.login'))
 
 def gen(camera):

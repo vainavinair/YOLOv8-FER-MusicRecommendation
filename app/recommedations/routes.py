@@ -49,5 +49,5 @@ def recommend():
                 ubcf_ids.append(x['song_id'])
         ubcf_ids = ','.join(ubcf_ids)
         ubcf_songs_details = s_api.get_tracks(token, ubcf_ids)
-        return render_template('songs.html', emotion=emotion, song_id=song_id, cs_songs=cs_songs_details, ibcf_songs=ibcf_songs_details, ubcf_songs=ubcf_songs_details)
+        return render_template('songs.html', emotion=emotion, song_id=song_id, cs_songs=cs_songs_details, ibcf_songs=ibcf_songs_details, ubcf_songs=ubcf_songs_details, user= user)
     return render_template('songs.html', songs=song_details, emotion=emotion, user = user)
