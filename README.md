@@ -11,3 +11,20 @@ Moodify is a Flask-based web application that seamlessly integrates facial emoti
   - **Currently Popular Suggestions**: Based on KNN recommendations, users can explore currently popular songs tailored to their listening profiles.
   - **Discover New Suggestions**: Presenting random popular songs based on the user's listening profile across all emotions using SVD(Singular value decomposition), inviting users to explore new musical avenues.
 - **Login Authentication**: Implemented to provide access to personalized recommendations and past data, ensuring security and enhancing user engagement.
+
+## Screenshots
+
+- **Login Page**:
+  ![Login Page](https://imgur.com/1C3Fxgb)
+
+- **Button**:
+  ![Button](https://imgur.com/wzc3k3f)
+
+- **Camera Page**:
+  ![Camera Page](https://imgur.com/LxXQszV)
+
+- **Recommendations Page 1**:
+  ![Recommendations Page 1](https://imgur.com/kKUMHz1)
+
+- **Recommendations Page 2**:
+  ![Recommendations Page 2](https://imgur.com/ofyOrjU)
