@@ -15,16 +15,16 @@ Moodify is a Flask-based web application that seamlessly integrates facial emoti
 ## Screenshots
 
 - **Login Page**:
-  ![Login Page](https://imgur.com/1C3Fxgb)
+  ![Login Page](https://i.imgur.com/1C3Fxgb.png)
 
-- **Button**:
-  ![Button](https://imgur.com/wzc3k3f)
+- **Home Page**:
+  ![Home Page](https://i.imgur.com/wzc3k3f.png)
 
 - **Camera Page**:
-  ![Camera Page](https://imgur.com/LxXQszV)
+  ![Camera Page](https://i.imgur.com/LxXQszV.png)
 
-- **Recommendations Page 1**:
-  ![Recommendations Page 1](https://imgur.com/kKUMHz1)
+- **Recommendations Page**:
+  ![Recommendations Page 1](https://i.imgur.com/kKUMHz1.png)
 
-- **Recommendations Page 2**:
-  ![Recommendations Page 2](https://imgur.com/ofyOrjU)
+- **Recommendations After Selecting a Song**:
+  ![Recommendations Page 2](https://i.imgur.com/ofyOrjU.png)
