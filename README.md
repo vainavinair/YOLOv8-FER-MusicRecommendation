@@ -5,7 +5,7 @@ Moodify is a Flask-based web application that seamlessly integrates facial emoti
 
 ## Features
 
-- **Facial Emotion Detection**: Users can interact with the application through their webcam, allowing real-time analysis of facial expressions to determine emotional states.
+- **Facial Emotion Detection**: Users can interact with the application through their webcam, allowing real-time analysis of facial expressions to determine emotional states using YOLOv8.
 - **Personalized Music Recommendations**:
   - **Your Favorites Suggestions**: Offering a selection of top favorite songs aligned with the detected emotion using cosine similarity.
   - **Currently Popular Suggestions**: Based on KNN recommendations, users can explore currently popular songs tailored to their listening profiles.
